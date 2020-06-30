@@ -1,0 +1,64 @@
+POST http://chichiapp.ir:30081/send
+Content-Type: application/sender
+
+{
+  "From": "chichiman service",
+  "To": "warehouse",
+  "Message": "message",
+  "Event": "message",
+  "Data":{
+  	"Products":[
+  		{"name":"amin"},
+  		{"name":"amin"}
+  		]
+  }
+}
+
+
+###
+
+POST http://chichiapp.ir:30081/send
+Content-Type: application/sender
+
+{
+  "From": "chichiman service",
+  "To": "warehouse",
+  "Message": "WaitForWareHouse",
+  "Event": "state_change",
+  "Data":{
+  	"Id":"190"
+  }
+}
+
+###
+POST http://chichiapp.ir:30081/send
+Content-Type: application/sender
+
+{
+  "From": "chichiman service",
+  "To": "warehouse",
+  "Message": "Gathering",
+  "Event": "state_change",
+  "Data":{
+  	"Id":"189"
+  }
+}
+
+###
+POST http://chichiapp.ir:30081/send
+Content-Type: application/sender
+
+{
+  "From": "chichiman service",
+  "To": "warehouse",
+  "Message": "WaitForAssign",
+  "Event": "state_change",
+  "Data":{
+  	"Id":"189"
+  }
+}
+
+###
+
+
+
