@@ -92,7 +92,7 @@ class RowLeftNav extends Component {
                                         </div>
                                         {/*<NavLink to={`/orders/income/${product.id}`} className="w-40 w-sm-100" dir='rtl' id='clickAble'>*/}
                                         <div className="w-40 w-sm-100  " dir='rtl' >
-                                            <p className="list-item-heading mb-1 truncate float-right fs1vw"   >
+                                            <p className="list-item-heading mb-1 truncate float-right fs1vw mainFontColor"   >
                                                 {product.title}
                                             </p>
                                         </div>
@@ -117,7 +117,7 @@ class RowLeftNav extends Component {
                                     </div>
 
                                     <div className="w-40 w-sm-100  " dir='rtl'  >
-                                        <p className="list-item-heading mb-1 truncate float-right font-weight-bold"   >
+                                        <p className="list-item-heading mb-1 truncate float-right font-weight-bold mainFontColor"   >
                                             {product.title}
                                         </p>
                                     </div>
