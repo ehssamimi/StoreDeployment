@@ -22,7 +22,7 @@ class OrderList extends Component {
     }
     render() {
         return (
-            <Card className='OrderList'>
+            <Card className='OrderList card'>
                 <HeaderList  recipe={this.props.recipe} time={this.props.time}/>
                 {
                     // this.state.chichiMan?  <ChchiMan/>:

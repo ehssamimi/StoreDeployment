@@ -24,7 +24,7 @@ class ChchiMan extends Component {
                         {
                              ChichiManInfo.length>0?
                                  ChichiManInfo.map((todo ,index)=>
-                                     <RowShowShowColEdit label={todo['label']} value={todo['value']} className='col-6'/>
+                                     <RowShowShowColEdit label={todo['label']} value={todo['value']} className='col-6' key={index}/>
                                  ):<div className='d-flex   justify-content-center' ><img src={loader} alt={loader} className='loader'/></div>
 
                         }

@@ -136,8 +136,8 @@ class ComponentToPrint extends React.Component {
 class Printable extends React.Component {
     render() {
         return (
-            <div className="container">
-                <div className="card">
+            <div className="container bg-white">
+                <div className="card bg-white">
                     <div className="card-header">
                         Invoice
                         <strong>01/01/01/2018</strong>
@@ -274,12 +274,14 @@ class Printable extends React.Component {
 class Printable2 extends React.Component {
     render() {
         return (
-            <div className="container">
-                <div className="card">
-                    <div className="card-header">
-                        Invoice
-                        <strong>01/01/01/2018</strong>
-                        <span className="float-right"> <strong>Status:</strong> Pending</span>
+            <div className="container bg-white"  >
+                <div className="card bg-white">
+                    <div className="card-header bg-white">
+                        <Printable/>
+
+                        {/*Invoice*/}
+                        {/*<strong>01/01/01/2018</strong>*/}
+                        {/*<span className="float-right"> <strong>Status:</strong> Pending</span>*/}
 
                     </div>
 

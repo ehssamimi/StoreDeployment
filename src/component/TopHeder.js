@@ -73,18 +73,23 @@ class TopHeder extends Component {
             console.log(JSON.parse(data)['Message']);
             switch (JSON.parse(data)['Message']) {
                 case 'WaitForWareHouse':
+                    console.log("WFWH-GEtData")
                 this.setState({WaitForWareHouse: JSON.parse(data)['Data'] !== null ? JSON.parse(data)['Data']['id'] : false});
                 break;
                 case "Gathering":
+                    console.log("Gathering-GEtData")
                     this.setState({Gathering: JSON.parse(data)['Data'] !== null ? JSON.parse(data)['Data']['id'] : false});
                     break;
                 case "WaitForAssign":
+                    console.log("WaitForAssign-GEtData")
                     this.setState({WaitForAssign: JSON.parse(data)['Data'] !== null ? JSON.parse(data)['Data']['id'] : false});
                     break;
                 case "Assigned":
+                    console.log("Assigned-GEtData")
                     this.setState({Assigned: JSON.parse(data)['Data'] !== null ? JSON.parse(data)['Data']['id'] : false});
                     break;
-                case "Check":
+                case "Checked":
+                    console.log("check-GEtData")
                     this.setState({Check: JSON.parse(data)['Data'] !== null ? JSON.parse(data)['Data']['id'] : false});
                     break;
                 default:
@@ -103,30 +108,36 @@ class TopHeder extends Component {
         let element = document.getElementById(`button ${i}`);
         switch (i) {
             case 1:
+                console.log("WFWH-blink")
                 this.interval1 =setInterval(function(){ this.tick(element) }.bind(this), 2000);
                 break;
             case 2:
+                console.log("Gathering-blink")
                 this.interval2 =setInterval(function(){ this.tick(element) }.bind(this), 2000);
                 break;
             case 3:
+                console.log("WaitForAssign-blink")
                 this.interval3 =setInterval(function(){ this.tick(element) }.bind(this), 2000);
                 break;
             case 4:
+                console.log("Assigned-blink")
                 this.interval4 =setInterval(function(){ this.tick(element) }.bind(this), 2000);
                 break;
             case 5:
+                console.log("check-blink")
                 this.interval5 =setInterval(function(){ this.tick(element) }.bind(this), 2000);
                 break;
 
             default:
-                this.setState({ WaitForWareHouse: true});
+                console.log("DEFAULT blink")
+                // this.setState({ WaitForWareHouse: true});
         }
 
 
     }
     tick (element){
-        console.log('tick');
-        console.log(element);
+        // console.log('tick');
+        // console.log(element);
         function timeFunction() {
             setTimeout(function () {
                 element.classList.remove("BorderColorPrimary")
@@ -144,23 +155,27 @@ class TopHeder extends Component {
     checkButtonCheck = i => {
         switch (i) {
             case 1:
+                console.log("clear-WFWH")
                     clearInterval(this.interval1);
                      this.setState({WaitForWareHouse: false});
                 break;
                 case 2:
-                    console.log("secend");
-                    clearInterval(this.interval2);
+                    console.log("clear-Gathering")
+                     clearInterval(this.interval2);
                     this.setState({ Gathering: false});
                 break;
                  case 3:
+                     console.log("clear-WaitForAssign")
                      clearInterval(this.interval3);
                      this.setState({ WaitForAssign: false});
                 break;
                 case 4:
+                    console.log("clear-Assigned")
                     clearInterval(this.interval4);
                      this.setState({ Assigned: false});
                 break;
                 case 5:
+                    console.log("clear-check")
                     clearInterval(this.interval5);
                      this.setState({ Check: false});
                 break;
@@ -189,14 +204,19 @@ class TopHeder extends Component {
     render() {
 
         if (this.state.WaitForWareHouse!==false){
+            console.log("set-WFWH-blink")
               this.blinkHeader(1,true);
         }else if(this.state.Gathering!==false){
+            console.log("set-Gathering-blink")
             this.blinkHeader(2,true);
         }else if(this.state.WaitForAssign!==false){
+            console.log("set-WaitForAssign-blink")
             this.blinkHeader(3,true);
         }else if(this.state.Assigned!==false){
+            console.log("set-Assigned-blink")
             this.blinkHeader(4,true);
         }else if(this.state.Check!==false){
+            console.log("set-check-blink")
             this.blinkHeader(5,true);
         }
 

@@ -89,12 +89,47 @@ $success-color: #3e884f;
 $warning-color: #b69329;
 $error-color: #c43d4b;
 
+
+//$separator-color-light: #313131!important;
+//$separator-color: #424242!important;
+//$background-color: #1b191b!important;
+//$foreground-color: #232223!important;
+//$input-background: #232223!important;
+//
+//$dark-btn-background: #8d8d8d!important;
+//$light-btn-background: #e4e4e4!important;
+//$button-text-color: #d0d0d0!important;
+//
+//$theme-color-1: #c0702f!important;
+//$theme-color-2: #aa4f43!important;
+//$theme-color-3: #d6a779!important;
+//$theme-color-4: #dba070!important;
+//$theme-color-5: #f6c797!important;
+//$theme-color-6: #d6cdca!important;
+//
+//$primary-color: #969696!important;
+//$secondary-color: #757575!important;
+//$muted-color: #5a5a5a!important;
+//
+//$gradient-color-1 : #523b2a!important;
+//$gradient-color-2 : #493627!important;
+//$gradient-color-3 : #754a29!important;
+
+
+
+
+
+
+
+
+
+
 /* 01.Base */
 html {
   font-family: IRANSans !important;
   width: 100%;
   height: 100%;
-  background: $background-color;
+  background: #1b191b;
 }
 
 :root {
@@ -112,7 +147,7 @@ html {
   --theme-color-6-10: #{rgba($theme-color-6, 0.1)};
 
   --primary-color: #{$primary-color};
-  --foreground-color: #{$foreground-color};
+  --foreground-color: #232223;
   --separator-color: #{$separator-color};
 }
 
@@ -128,7 +163,7 @@ body {
   font-size: 1vw;
   font-weight: 400;
   color: $primary-color;
-  background: $background-color;
+  background: #1b191b;
 
   &.background {
     height: 100%;
@@ -1637,7 +1672,7 @@ button {
 
 /* 09.Navbar*/
 .navbar {
-  background: $foreground-color;
+  background: #232223;
   height: $navbar-height;
   padding: 1.5rem $main-margin 1.5rem 0;
   @include depth(1);
@@ -2710,7 +2745,7 @@ main {
 /* 16.Cards*/
 .card {
   border: initial;
-  background: $foreground-color;
+  background: #232223;
 
   .card-header .card-icon {
     right: 5px;
@@ -6725,6 +6760,9 @@ input:-webkit-autofill {
 .border-Img{
   border: 2px solid  $muted-color;
   padding: 2px ;
+}
+.bg-white{
+  background: white!important;
 }
 
 //.w-140{
