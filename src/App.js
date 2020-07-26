@@ -47,6 +47,10 @@ class App extends Component {
             loginUser:true
         })
       }
+        localStorage.setItem("themeColor", "dark.orange");
+        localStorage.setItem("__theme_color", "dark.orange");
+        // localStorage.setItem()
+
     };
 
     render() {
