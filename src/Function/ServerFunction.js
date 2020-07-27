@@ -121,10 +121,10 @@ export async  function  GetProductList33(state){
     await axios.get(`${Const.ChichiMan}warehouse/baskets/get/state?state=${state}` , {headers: headers}).then(function (response) {
         console.log(response);
         // let { ItemId } = response.data ;
-        resp=response.data;
+        resp={state:response.status,Description:response.data};
+
     }).catch(function (error) {
-        console.log(error);
-        resp='error'
+        resp=Error(error)
     });
     return resp;
 }

@@ -6738,9 +6738,7 @@ input:-webkit-autofill {
   }
 
 }
-.BorderColorPrimary{
-  border-color: darken(#c0702f, 8%);
-}
+
 .headerSelection .active{
   color: #c0702f!important;
   background-color: transparent!important;
@@ -6781,5 +6779,36 @@ input:-webkit-autofill {
 //  border-color: darken($theme-color-1, 8%) !important;
 //}
 
+
+
+@-webkit-keyframes borderBlink {
+  from, to {
+    border-color: transparent
+  }
+  50% {
+    border-color: #c0702f
+  }
+}
+@keyframes borderBlink {
+  from, to {
+    border-color: transparent
+  }
+  50% {
+    border-color: #c0702f
+  }
+}
+.borderBlink{
+  border:1px solid black;
+  /* add 'border-color: transparent' if you wish no border to show initially */
+}
+.borderBlink:hover {
+  -webkit-animation: borderBlink 1s step-end infinite;
+  animation: borderBlink 1s step-end infinite;
+}
+.BorderColorPrimary{
+  //border:1px solid #c0702f;
+  -webkit-animation: borderBlink 1s step-end infinite;
+  animation: borderBlink 1s step-end infinite;
+}
 
 

@@ -4,7 +4,7 @@ import OrderList from "../IncomeOrder/OrderList";
 // import MainDeliveried from "./MainDeliveried";
 // import {GetProductDetail, GetProductList, GetState} from "../../Function/ServerFunction";
 import {GetProductDetail33, GetProductList33, GetState33} from "../../Function/ServerFunction";
-import {formattime, ProductDetails, ProductList} from "../../Function/UseFullFunction";
+import {error_Notification, formattime, ProductDetails, ProductList} from "../../Function/UseFullFunction";
 import io from "socket.io-client";
 import {endpoint} from "../Const";
 
@@ -42,30 +42,54 @@ class Delivered extends Component {
         // *********get list of package id from this state******
 
         // *******situations[2]=inProgress******
-        let listProducts=await GetProductList33(situations[0]);
-        if (Array.isArray(listProducts) && listProducts.length>0) {
-            // *******get list product from ListProducts******
-            let listProduct=ProductList(listProducts);
-            this.setState({
-                listProduct
-            })
+
+        let {state ,Description}=await GetProductList33(situations[0]);
+        let listProducts=Description;
+        if (state===200){
+
+            if (Array.isArray(listProducts) && listProducts.length>0) {
+                // *******get list product from ListProducts******
+                let listProduct=ProductList(listProducts);
+                this.setState({
+                    listProduct
+                })
+            }else {
+                this.setState({
+                    listProduct:""
+                })
+            }
+        }else {
+            error_Notification(state ,Description)
         }
+
+
+        // let listProducts=await GetProductList33(situations[0]);
+        // if (Array.isArray(listProducts) && listProducts.length>0) {
+        //     // *******get list product from ListProducts******
+        //     let listProduct=ProductList(listProducts);
+        //     this.setState({
+        //         listProduct
+        //     })
+        // }
         const id=this.props.match.params.id;
         // console.log("changeMainComponent");
         if (id !==undefined &&  id.length>6){
-            // ****get package detail from package id *****
-            let ProductDetail= await GetProductDetail33(id);
-            let{Products,UserInfo ,StateChangingTiming,TotalPrice}=ProductDetail;
-            // ****get time from timeStamp*****
-            let  time= formattime(StateChangingTiming);
-            // ****get recipe true or false *****
-            let {Receipt}=UserInfo;
-            // ****get products details from  Products *****
-            let ProductsDetails=ProductDetails(Products);
+            if (listProducts.length!==0){
+                // ****get package detail from package id *****
+                let ProductDetail= await GetProductDetail33(id);
+                let{Products,UserInfo ,StateChangingTiming,TotalPrice}=ProductDetail;
+                // ****get time from timeStamp*****
+                let  time= formattime(StateChangingTiming);
+                // ****get recipe true or false *****
+                let {Receipt}=UserInfo;
+                // ****get products details from  Products *****
+                let ProductsDetails=ProductDetails(Products);
 
-            this.setState({
-                Products:ProductsDetails,id,Receipt,time,TotalPrice
-            })
+                this.setState({
+                    Products:ProductsDetails,id,Receipt,time,TotalPrice
+                })
+            }
+
         }
     }
 

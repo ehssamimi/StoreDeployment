@@ -30,8 +30,10 @@ class LeftNav extends Component {
 
 
 
-
-
+        console.log("props.listProduct.length")
+        console.log(props.listProduct.length)
+        console.log("state.product.length")
+        console.log(state.product.length)
         if (props.listProduct.length !== state.product.length) {
             // console.log(props.listProduct !== state.product);
             // console.log('listProduct');

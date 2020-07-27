@@ -43,13 +43,22 @@ class CollectOrders extends Component {
         // *********get list of package id from this state******
         // *******situations[2]=inProgress******
         let {state ,Description }=await GetProductList(situations[1]);
+        console.log("state" );
+        console.log(state );
+        console.log("Description" );
+        console.log(Description );
         let listProducts=Description;
         if (state===200){
+
             if (Array.isArray(listProducts) && listProducts.length>0) {
                 // *******get list product from ListProducts******
                 let listProduct=ProductList1(listProducts);
                 this.setState({
                     listProduct
+                })
+            }else {
+                this.setState({
+                    listProduct:""
                 })
             }
         }else {
@@ -68,27 +77,30 @@ class CollectOrders extends Component {
         // console.log("changeMainComponent");
         if (id !==undefined &&  id.length>6){
             // ****get package detail from package id *****
+            if (listProducts.length!==0){
 
-            let {state ,Description }= await GetProductDetail(id)
-            if (state===200){
-                let ProductDetail=Description;
-                let{Products,UserInfo ,StateChangingTiming:{WaitForWareHouse},TotalPrice}=ProductDetail;
-                console.log(ProductDetail);
+                let {state ,Description }= await GetProductDetail(id)
+                if (state===200){
+                    let ProductDetail=Description;
+                    let{Products,UserInfo ,StateChangingTiming:{WaitForWareHouse},TotalPrice}=ProductDetail;
+                    console.log(ProductDetail);
 
-                // ****get time from timeStamp*****
-                let  time= formattime(WaitForWareHouse);
-                // ****get recipe true or false *****
-                let {Receipt}=UserInfo;
-                // ****get products details from  Products *****
-                let ProductsDetails=ProductDetails(Products);
+                    // ****get time from timeStamp*****
+                    let  time= formattime(WaitForWareHouse);
+                    // ****get recipe true or false *****
+                    let {Receipt}=UserInfo;
+                    // ****get products details from  Products *****
+                    let ProductsDetails=ProductDetails(Products);
 
-                this.setState({
-                    Products:ProductsDetails,id,Receipt,time,TotalPrice
-                })
+                    this.setState({
+                        Products:ProductsDetails,id,Receipt,time,TotalPrice
+                    })
 
-            }else {
-                error_Notification(state ,Description)
+                }else {
+                    error_Notification(state ,Description)
+                }
             }
+
 
         }
     }

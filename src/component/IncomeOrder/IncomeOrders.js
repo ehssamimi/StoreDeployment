@@ -71,6 +71,9 @@ class IncomeOrders extends Component {
                 })
             }
         }else {
+            this.setState({
+                listProduct:""
+            })
             error_Notification(state ,Description)
         }
 
@@ -78,26 +81,31 @@ class IncomeOrders extends Component {
         // console.log("changeMainComponent");
         if (id !==undefined &&  id.length>6){
             // ****get package detail from package id *****
-            let {state ,Description }= await GetProductDetail(id)
-            if (state===200){
-                let ProductDetail=Description;
-                let{Products,UserInfo ,StateChangingTiming:{WaitForWareHouse},TotalPrice}=ProductDetail;
-                console.log(ProductDetail);
 
-                // ****get time from timeStamp*****
-                let  time= formattime(WaitForWareHouse);
-                // ****get recipe true or false *****
-                let {Receipt}=UserInfo;
-                // ****get products details from  Products *****
-                let ProductsDetails=ProductDetails(Products);
+            if (listProducts.length!==0){
 
-                this.setState({
-                    Products:ProductsDetails,id,Receipt,time,TotalPrice
-                })
+                let {state ,Description }= await GetProductDetail(id)
+                if (state===200){
+                    let ProductDetail=Description;
+                    let{Products,UserInfo ,StateChangingTiming:{WaitForWareHouse},TotalPrice}=ProductDetail;
+                    console.log(ProductDetail);
 
-            }else {
-                error_Notification(state ,Description)
+                    // ****get time from timeStamp*****
+                    let  time= formattime(WaitForWareHouse);
+                    // ****get recipe true or false *****
+                    let {Receipt}=UserInfo;
+                    // ****get products details from  Products *****
+                    let ProductsDetails=ProductDetails(Products);
+
+                    this.setState({
+                        Products:ProductsDetails,id,Receipt,time,TotalPrice
+                    })
+
+                }else {
+                    error_Notification(state ,Description)
+                }
             }
+
         }
     }
 
